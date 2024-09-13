@@ -1,0 +1,72 @@
+
+import { createContext, useEffect, useState } from 'react'
+import Child1 from './Child1'
+import New from './New'
+
+export const ThemeContext = createContext()
+
+const App = () => {
+  
+  const [theme, setTheme] = useState('light')
+    
+const toggle = ()=>{
+  setTheme((cur)=> cur === 'light' ? 'dark' : 'light')
+
+}
+const userDetails = [
+  {
+    name:'vinoth',
+    age:'24',
+    number:'8220921154',
+  },
+  {
+    name:'ajith',
+    age:'20',
+    number:'9944922181',
+  },
+  {
+    name:'kamal',
+    age:'22',
+    number:'8056104073',
+  },
+  {
+    name:'india',
+    age:'26',
+    number:'9087431418',
+  },
+  {
+    name:'vignesh',
+    age:'25',
+    number:'6908277924',
+  }
+]
+
+
+
+const themes = {
+  backgroundColor: theme === 'light' ? 'white' :'black',
+  color:theme === 'light' ? 'black' : 'white'
+}
+
+
+  return (
+
+    <ThemeContext.Provider value={{theme,userDetails}}>
+    <div>  
+      <h1 style={themes}>
+        sample text
+      </h1>
+
+      <button onClick={toggle}>
+                 dark mode
+      </button>
+      <Child1/>
+      <New />
+      
+    </div>
+    
+    </ThemeContext.Provider>
+  )
+}
+
+export default App
